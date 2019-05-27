@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Jea_automotive">
+    <output-path>$PROJECT_DIR$/out/artifacts/Jea_automotive</output-path>
+    <root id="root">
+      <element id="module-output" name="Jea_automotive" />
+    </root>
+  </artifact>
+</component>

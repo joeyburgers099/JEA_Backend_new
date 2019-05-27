@@ -1,0 +1,43 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5"
+                   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<display-name>Archetype Created Web Application</display-name>
+
+    <!--<session-config>-->
+    <!--<session-timeout>-->
+    <!--300-->
+    <!--</session-timeout>-->
+    <!--</session-config>-->
+
+    <!--&lt;!&ndash; SECURITY &ndash;&gt;-->
+    <!--<login-config>-->
+    <!--<auth-method>BASIC</auth-method>-->
+    <!--<realm-name>jdbc-realm</realm-name>-->
+    <!--&lt;!&ndash;<form-login-config>&ndash;&gt;-->
+    <!--&lt;!&ndash;<form-login-page>/signin.xhtml</form-login-page>&ndash;&gt;-->
+    <!--&lt;!&ndash;<form-error-page>/signin.xhtml</form-error-page>&ndash;&gt;-->
+    <!--&lt;!&ndash;</form-login-config>&ndash;&gt;-->
+    <!--</login-config>-->
+
+    <!--<security-role>-->
+    <!--<role-name>users</role-name>-->
+    <!--</security-role>-->
+
+    <!--<security-constraint>-->
+    <!--<display-name>Restricted to users</display-name>-->
+    <!--<web-resource-collection>-->
+    <!--<web-resource-name>Restricted Access</web-resource-name>-->
+    <!--<url-pattern>/item/*</url-pattern>-->
+        <!--<url-pattern>/quiz/*</url-pattern>-->
+        <!--<url-pattern>/payment/*</url-pattern>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+    <!--<role-name>users</role-name>-->
+    <!--</auth-constraint>-->
+    <!--<user-data-constraint>-->
+    <!--<transport-guarantee>NONE</transport-guarantee>-->
+    <!--</user-data-constraint>-->
+    <!--</security-constraint>-->
+
+</web-app>
