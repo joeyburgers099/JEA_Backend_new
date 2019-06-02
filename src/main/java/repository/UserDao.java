@@ -43,6 +43,13 @@ public class UserDao {
     public User find(Long id) {
         return entityManager.createNamedQuery("User.findOne", User.class).setParameter("id", id).getSingleResult();
     }
+    public User findOne(String username, String password) {
+        return entityManager.createNamedQuery("User.checkcreds", User.class)
+                .setParameter("username", username)
+                .setParameter("password", password)
+                .getSingleResult();
+    }
+
 
     public List<User> findAllUsers(){
         List<User> users;
@@ -110,7 +117,7 @@ public class UserDao {
 
             // load a properties file
             prop.load(input);
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(prop.getProperty("algorithm"))).build();
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256("frontendgeeftmijstoring")).build();
             return verifier.verify(token);
         } catch (FileNotFoundException e) {
             return null;

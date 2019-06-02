@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import controller.Chat.ChatEndpoint;
+import domain.SHAExample;
 import domain.User;
 import repository.UserDao;
 
@@ -38,8 +39,11 @@ public class AuthenticationEndpoint {
 
         try {
 
+            User user;
+            String hashedpw = SHAExample.get_SHA_256_SecurePassword(password);
             // Authenticate the user using the credentials provided
-            User user = authenticate(username, password);
+
+            user = userDao.findOne(username, hashedpw);
 
             // Issue a token for the user
             String token = issueToken(user);
