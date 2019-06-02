@@ -45,18 +45,6 @@ public class Auto implements Serializable{
     @Column(name = "huidigBod")
     private double HuidigBod;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "advertentie_id", referencedColumnName = "advertentie_id")
-//    private Advertentie advertentie;
-//
-//    public Advertentie getAdvertentie() {
-//        return advertentie;
-//    }
-//
-//    public Auto setAdvertentie(Advertentie advertentie) {
-//        this.advertentie = advertentie;
-//        return this;
-//    }
 
     public Auto() {
 

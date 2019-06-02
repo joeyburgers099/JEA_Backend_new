@@ -3,6 +3,7 @@ package controller;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
+import controller.Chat.ChatEndpoint;
 import domain.User;
 import repository.UserDao;
 
@@ -17,10 +18,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Path("authentication")
 public class AuthenticationEndpoint {
 
+    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
 
     @EJB
     private UserDao userDao;
@@ -75,15 +79,15 @@ public class AuthenticationEndpoint {
             Properties prop = new Properties();
 
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                LOGGER.log(Level.INFO,"Sorry, unable to find config.properties");
                 return "Bestand niet gevonden";
             }
 
             // load a properties file
             prop.load(input);
-            Algorithm algorithm = Algorithm.HMAC256(prop.getProperty("algorithm"));
+            Algorithm algorithm = Algorithm.HMAC256("frontendgeeftmijstoring");
             String token = JWT.create()
-                    .withIssuer(user.getUserName())
+                    .withIssuer("JEA_JOEY")
                     .withClaim("ID",user.getGebruikersiD())
                     .withClaim("username",user.getUserName())
                     .withClaim("Roles" , String.valueOf(user.getRole()))

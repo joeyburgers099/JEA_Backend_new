@@ -1,7 +1,11 @@
 package controller;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import controller.Chat.ChatEndpoint;
+import domain.Role;
+import domain.SHAExample;
 import domain.User;
+import jwt.JWT;
 import repository.UserDao;
 
 import javax.ejb.EJB;
@@ -12,13 +16,19 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 @Path("user")
 public class UserController {
 
+    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
+
     @EJB
     UserDao userDao;
 
+    @JWT(Permissions = Role.Admin)
     @GET
     @Consumes("application/json")
     public List<User> findAllUsers() {
@@ -29,13 +39,12 @@ public class UserController {
     @POST
     @Consumes("application/json")
     public void create(User user) {
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe----------------------------------EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee");
-        System.out.println(user.getEmail());
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassWd());
 
+        user.setRole(Role.User);
+        user.setPassWd(SHAExample.get_SHA_256_SecurePassword(user.getPassWd()));
         userDao.create( user );
     }
+    @JWT(Permissions = Role.User)
     @GET
     @Path("/getSelf")
     public User getSelf(@Context HttpHeaders headers) throws UnsupportedEncodingException {
@@ -57,13 +66,15 @@ public class UserController {
         return userDao.getById( id );
     }
 
+
     @PUT
     @Consumes("application/json")
     public void update(User user) {
-        System.out.println(user.getGebruikersiD());
+        LOGGER.log(Level.INFO, String.valueOf(user.getGebruikersiD()));
         userDao.update( user );
     }
 
+    @JWT(Permissions = Role.Admin)
     @DELETE
     @Path("/{id}")
     @Consumes("application/json")

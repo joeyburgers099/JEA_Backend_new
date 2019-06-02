@@ -2,6 +2,7 @@ package repository;
 
 
 import controller.AutoController;
+import controller.Chat.ChatEndpoint;
 import domain.Auto;
 import interceptor.UserInterceptor;
 
@@ -12,10 +13,14 @@ import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Local
 @Stateless
 public class AutoDao {
+
+    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
 
     @PersistenceContext (unitName = "myPU")
     public EntityManager entityManager;
@@ -32,7 +37,7 @@ public class AutoDao {
                     "SELECT a FROM Auto a", Auto.class).getResultList();
             return autos;
         }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            LOGGER.log(Level.INFO, ex.getMessage());
             return null;
         }
     }

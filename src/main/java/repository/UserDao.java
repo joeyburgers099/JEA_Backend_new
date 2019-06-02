@@ -4,8 +4,10 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.sun.media.jfxmedia.logging.Logger;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import com.warrenstrange.googleauth.GoogleAuthenticatorKey;
+import controller.Chat.ChatEndpoint;
 import domain.User;
 
 import interceptor.UserInterceptor;
@@ -23,11 +25,16 @@ import javax.ws.rs.core.HttpHeaders;
 import java.io.*;
 import java.util.List;
 import java.util.Properties;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 
 @Local
 @Stateless
 @Interceptors(UserInterceptor.class)
 public class UserDao {
+
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger( ChatEndpoint.class.getName() );
 
     @PersistenceContext (unitName = "myPU")
     private EntityManager entityManager;
@@ -44,7 +51,7 @@ public class UserDao {
                     "SELECT u FROM User u", User.class).getResultList();
             return users;
         }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            LOGGER.log(Level.INFO, ex.getMessage());
             return null;
         }
     }
@@ -58,7 +65,7 @@ public class UserDao {
         try {
             return entityManager.find(User.class, id);
         }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            LOGGER.log(Level.INFO, ex.getMessage());
             return null;
         }
     }
@@ -75,21 +82,7 @@ public class UserDao {
     }
 
     public String generateAuthKey(ContainerRequestContext requestContext) throws UnsupportedEncodingException {
-//        Claims claims = null;
-//        try {
-//            String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-//            String token = authorizationHeader.substring("Bearer".length()).trim();
-//            claims = Jwts.parser().setSigningKey("".getBytes("UTF-8")).parseClaimsJws(token).getBody();
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//        int user = claims.get("ID", Integer.class);
-//        GoogleAuthenticator gAuth = new GoogleAuthenticator();
-//        final GoogleAuthenticatorKey key = gAuth.createCredentials();
-//        User userkey =  find((long) user);
-//        userkey.setAuthenticationKey(key.getKey());
-//        entityManager.merge(userkey);
-//        return key.getKey();
+
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
         String token = authorizationHeader.substring("Bearer".length()).trim();
         DecodedJWT decodedjwt = verifyJWT(token);
@@ -111,7 +104,7 @@ public class UserDao {
             Properties prop = new Properties();
 
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                LOGGER.log(Level.INFO, "Sorry, unable to find config.properties");
                 return null;
             }
 
@@ -125,5 +118,6 @@ public class UserDao {
             return null;
         }
     }
+
 
 }

@@ -1,18 +1,26 @@
 package interceptor;
 
+import controller.Chat.ChatEndpoint;
 import domain.User;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserInterceptor {
+
+    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
 
     @AroundInvoke
     public Object intercept(InvocationContext context) throws Exception {
 
-        System.out.println("UserInterceptor - Before methode : "+ context.getMethod().getName());
+        LOGGER.log(Level.INFO,"UserInterceptor - Before methode : "+ context.getMethod().getName() );
+
         Object result = context.proceed();
-        System.out.println("UserInterceptor - After methode : "+ context.getMethod().getName());
+
+        LOGGER.log(Level.INFO, "UserInterceptor - After methode : "+ context.getMethod().getName());
+
         return result;
     }
 
