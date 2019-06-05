@@ -66,8 +66,8 @@
       <file leaf-file-name="UserInterceptor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/interceptor/UserInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="374">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -773,7 +773,7 @@
       <workItem from="1557963964238" duration="18357000" />
       <workItem from="1558547859868" duration="12988000" />
       <workItem from="1558899902942" duration="49000" />
-      <workItem from="1558900143371" duration="48123000" />
+      <workItem from="1558900143371" duration="48404000" />
     </task>
     <task id="LOCAL-00001" summary="- Interception&#10;- CRUD user&#10;- JAX-RS">
       <created>1551094682863</created>
@@ -895,7 +895,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436459000" />
+    <option name="totallyTimeSpent" value="436740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1267,8 +1267,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/interceptor/UserInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        <state relative-caret-position="374">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
