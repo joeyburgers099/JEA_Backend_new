@@ -45,7 +45,7 @@ cmake-build-*/
 
 # File-based project format
 *.iws
-*.properties
+config.properties
 
 # IntelliJ
 out/
