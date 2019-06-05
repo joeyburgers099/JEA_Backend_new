@@ -20,6 +20,8 @@ public class UserInterceptor {
         LOGGER.log(Level.INFO, "UserInterceptor - After methode : "+ context.getMethod().getName());
 
         return result;
+
+        test;
     }
 
 }
