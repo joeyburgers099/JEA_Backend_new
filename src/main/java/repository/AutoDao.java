@@ -1,15 +1,9 @@
 package repository;
 
 
-import controller.AutoController;
-import controller.Chat.ChatEndpoint;
 import domain.Auto;
-import interceptor.UserInterceptor;
-
-import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -20,7 +14,7 @@ import java.util.logging.Logger;
 @Stateless
 public class AutoDao {
 
-    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( AutoDao.class.getName() );
 
     @PersistenceContext (unitName = "myPU")
     public EntityManager entityManager;

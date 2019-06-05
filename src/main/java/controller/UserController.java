@@ -1,7 +1,6 @@
 package controller;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import controller.Chat.ChatEndpoint;
 import domain.Role;
 import domain.SHAExample;
 import domain.User;
@@ -23,7 +22,7 @@ import java.util.logging.Logger;
 @Path("user")
 public class UserController {
 
-    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( UserController.class.getName() );
 
     @EJB
     UserDao userDao;

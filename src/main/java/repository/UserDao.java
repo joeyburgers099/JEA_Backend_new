@@ -4,19 +4,14 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.sun.media.jfxmedia.logging.Logger;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import com.warrenstrange.googleauth.GoogleAuthenticatorKey;
-import controller.Chat.ChatEndpoint;
 import domain.User;
 
 import interceptor.UserInterceptor;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.interceptor.Interceptor;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,16 +20,14 @@ import javax.ws.rs.core.HttpHeaders;
 import java.io.*;
 import java.util.List;
 import java.util.Properties;
-import java.util.function.Supplier;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 
 @Local
 @Stateless
 @Interceptors(UserInterceptor.class)
 public class UserDao {
 
-    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger( ChatEndpoint.class.getName() );
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger( UserDao.class.getName() );
 
     @PersistenceContext (unitName = "myPU")
     private EntityManager entityManager;

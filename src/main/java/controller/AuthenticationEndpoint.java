@@ -3,7 +3,6 @@ package controller;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
-import controller.Chat.ChatEndpoint;
 import domain.SHAExample;
 import domain.User;
 import repository.UserDao;
@@ -14,8 +13,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
@@ -25,7 +22,7 @@ import java.util.logging.Logger;
 @Path("authentication")
 public class AuthenticationEndpoint {
 
-    private static final Logger LOGGER = Logger.getLogger( ChatEndpoint.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( AuthenticationEndpoint.class.getName() );
 
     @EJB
     private UserDao userDao;

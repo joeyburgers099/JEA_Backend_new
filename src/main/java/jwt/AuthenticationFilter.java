@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import domain.Role;
 
 import javax.annotation.Priority;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -17,13 +15,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.AnnotatedElement;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.Properties;
 
 @JWT
 @Provider
