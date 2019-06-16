@@ -10,7 +10,7 @@ pipeline {
     
         stage('Deploy'){
             steps{
-                sh 'cp GlassfishWithPayara/target/GlassfishWithPayara.war GlassfishWithPayara.war'
+                sh 'cp target/GlassfishWithPayara.war GlassfishWithPayara.war'
                 sshPublisher(publishers:[sshPublisherDesc(configName:'testrig', transfers:[sshTransfer(cleanRemote: false, excludes: '', execCommand: '/home/student/payara/payara5/bin/asadmin --passwordfile password.properties --host localhost --user admin deploy --force GlassfishWithPayara.war', execTimeout: 12000000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'GlassfishWithPayara.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
        
             }
