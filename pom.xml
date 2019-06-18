@@ -213,7 +213,7 @@
           <configuration>
             <!-- Suite testng xml file to consider for test execution -->
             <suiteXmlFiles>
-              <suiteXmlFile>OrderShareLimit.xml</suiteXmlFile>
+              <suiteXmlFile>TestNG.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>
